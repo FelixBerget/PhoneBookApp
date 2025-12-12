@@ -8,7 +8,7 @@ namespace PhoenbookApp
     {
         public Validator() { }
 
-        public void Validate(string response, Answerer _answerer, PhoneBook _phonebook) {
+        public bool Validate(string response, Answerer _answerer, PhoneBook _phonebook) {
             if (response == "søk")
             {
                 _answerer.findContact(_phonebook);
@@ -19,12 +19,13 @@ namespace PhoenbookApp
             }
             else if (response == "avslutt")
             {
-                return;
+                return false;
             }
             else
             {
                 Console.WriteLine("Ugyldig input");
             }
+            return true;
         }
     }
 }
