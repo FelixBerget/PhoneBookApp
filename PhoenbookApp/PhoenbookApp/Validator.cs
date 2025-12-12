@@ -8,7 +8,7 @@ namespace PhoenbookApp
     {
         public Validator() { }
 
-        public bool Validate(string response, Answerer _answerer, PhoneBook _phonebook) {
+        public bool Validate(string response, Answerer _answerer, PhoneBook _phonebook, Modifier _modifier) {
             if (response == "søk")
             {
                 _answerer.findContact(_phonebook);
@@ -20,6 +20,14 @@ namespace PhoenbookApp
             else if (response == "avslutt")
             {
                 return false;
+            }
+            else if(response == "legg til")
+            {
+                _modifier.AddContact(_phonebook);
+            }
+            else if(response == "fjern")
+            {
+                _modifier.DeleteContact(_phonebook);
             }
             else
             {

@@ -32,7 +32,7 @@ namespace PhoenbookApp
         }
         public void RemoveContact(string name)
         {
-            _contacts.RemoveAll(x => x.GetName() == name);
+            _contacts.RemoveAll(x => x.GetName().ToLower() == name.ToLower());
         }
 
     }
