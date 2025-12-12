@@ -19,6 +19,10 @@ namespace PhoenbookApp
             {
                 Console.WriteLine("Fjernet bruker");
             }
+            else
+            {
+                Console.WriteLine("Bruker eksisterer ikke");
+            }
         }
 
         public void AddContact(PhoneBook _phoneBook)
