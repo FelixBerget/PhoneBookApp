@@ -7,8 +7,10 @@ namespace PhoenbookApp
     public class View
     {
         PhoneBook _phonebook;
+        Answerer _answererer;
         public View(PhoneBook p) {
             _phonebook = p;
+            _answererer = new Answerer();
         }
 
         public void show()
@@ -21,11 +23,11 @@ namespace PhoenbookApp
                 Console.Clear();
                 if(response == "søk")
                 {
-                    findContact();
+                    _answererer.findContact(_phonebook);
                 }
                 else if(response == "list")
                 {
-                    ListContacts();
+                    _answererer.ListContacts(_phonebook);
                 }
                 else if( response == "avslutt")
                 {
@@ -35,34 +37,6 @@ namespace PhoenbookApp
                 {
                     Console.WriteLine("Ugyldig input");
                 }
-            }
-        }
-        public void findContact()
-        {
-            Console.WriteLine("Skriv inn navn du vil søke på");
-            string response = Console.ReadLine();
-            Console.Clear();
-            Contact c = _phonebook.Search(response);
-            if(c == null)
-            {
-                c = _phonebook.SearchWihtNumber(response);
-            }
-            if(c == null)
-            {
-                Console.WriteLine("Ugyldig input");
-                return;
-            }
-            Console.WriteLine("Navn : " + c.GetName());
-            Console.WriteLine("Telefonummer : " + c.GetPhoneNumber());
-
-        }
-
-        public void ListContacts()
-        {
-            for(int i = 0; i < _phonebook.GetContacts().Count; i++)
-            {
-                Console.WriteLine("Navn : " + _phonebook.GetContacts()[i].GetName());
-                Console.WriteLine("Telefonummer : " + _phonebook.GetContacts()[i].GetPhoneNumber());
             }
         }
     }
