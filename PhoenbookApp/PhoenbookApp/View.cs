@@ -7,10 +7,12 @@ namespace PhoenbookApp
     public class View
     {
         PhoneBook _phonebook;
-        Answerer _answererer;
+        Answerer _answerer;
+        Validator _validator;
         public View(PhoneBook p) {
             _phonebook = p;
-            _answererer = new Answerer();
+            _answerer = new Answerer();
+            _validator = new Validator();
         }
 
         public void show()
@@ -21,22 +23,8 @@ namespace PhoenbookApp
                 Console.WriteLine("Skriv (søk) for å søke, (list) for å få liste og (avslutt) for å stoppe appen");
                 string response = Console.ReadLine();
                 Console.Clear();
-                if(response == "søk")
-                {
-                    _answererer.findContact(_phonebook);
-                }
-                else if(response == "list")
-                {
-                    _answererer.ListContacts(_phonebook);
-                }
-                else if( response == "avslutt")
-                {
-                    return;
-                }
-                else
-                {
-                    Console.WriteLine("Ugyldig input");
-                }
+                _validator.Validate(response, _answerer, _phonebook);
+
             }
         }
     }
