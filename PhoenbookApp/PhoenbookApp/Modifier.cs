@@ -12,7 +12,13 @@ namespace PhoenbookApp
         {
             Console.WriteLine("Skriv brukeren du vil fjerne");
             string response = Console.ReadLine();
+            int previousSize = _phoneBook.GetContacts().Count;
             _phoneBook.RemoveContact(response);
+            int currentSize = _phoneBook.GetContacts().Count;
+            if (previousSize > currentSize)
+            {
+                Console.WriteLine("Fjernet bruker");
+            }
         }
 
         public void AddContact(PhoneBook _phoneBook)
