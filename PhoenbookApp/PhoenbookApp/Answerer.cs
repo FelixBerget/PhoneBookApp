@@ -17,7 +17,7 @@ namespace PhoenbookApp
             Contact c = _phonebook.Search(response);
             if (c == null)
             {
-                c = _phonebook.SearchWihtNumber(response);
+                c = _phonebook.SearchWithNumber(response);
             }
             if (c == null)
             {

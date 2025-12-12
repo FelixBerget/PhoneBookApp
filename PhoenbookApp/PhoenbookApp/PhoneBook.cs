@@ -22,7 +22,7 @@ namespace PhoenbookApp
             return _contacts.Find(x => x.GetName().ToLower().Contains(name));
 
         }
-        public Contact SearchWihtNumber(string phoneNumber)
+        public Contact SearchWithNumber(string phoneNumber)
         {
             return _contacts.Find(x => x.GetPhoneNumber() == (phoneNumber));
         }
